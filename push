@@ -1,0 +1,19 @@
+#!/bin/bash
+
+git pull
+
+git add .
+git commit -am "chore(main): $(date)"
+git push --all
+
+# Сжатие git
+if [[ $1 == "compress" ]]; then
+	if [[ -d .git ]]; then
+		find . -type f -name "*Конфликтующая*" -delete
+		find . -type f -name "*conflicted*" -delete
+		find . -depth -path ./.stversions -prune -o -name ".syncthing.*.tmp" -delete
+		git fsck
+		git gc --prune=now
+		git gc --aggressive --prune=now
+	fi
+fi
