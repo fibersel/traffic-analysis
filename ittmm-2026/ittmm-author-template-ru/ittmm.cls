@@ -2911,7 +2911,7 @@
 % \bibliographystyle{elsarticle-num}
 
 \usepackage[%
-parentracker=true,%
+parentracker=true,%i
 backend=biber,%
 hyperref=auto,%
 language=auto,%
@@ -2984,24 +2984,45 @@ intitle=true,%
 % }
 
 
-\setmainfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Serif}
-\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Sans Serif}
-\setmonofont[Scale=MatchLowercase]{CMU Typewriter Text}
+\RequirePackage{fontspec}
 
-% CMU Serif
-\newfontfamily\cyrillicfont%
-[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
-{CMU Serif}
+\setmainfont[
+    Path = ./fonts/,          % путь к TTF файлам
+    Ligatures = TeX,
+    Scale = MatchLowercase
+]{cmunrm.ttf}
 
-% CMU Sans Serif
-\newfontfamily\cyrillicfontsf%
-[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
-{CMU Sans Serif}
+\setsansfont[
+    Path = ./fonts/,
+    Ligatures = TeX,
+    Scale = MatchLowercase
+]{cmunsx.ttf}
 
-% CMU Typewriter Text
-\newfontfamily\cyrillicfonttt%
-[Script=Cyrillic,Scale=MatchLowercase]%
-{CMU Typewriter Text}
+\setmonofont[
+    Path = ./fonts/,
+    Scale = MatchLowercase
+]{cmuntt.ttf}
+
+\newfontfamily\cyrillicfont[
+    Script = Cyrillic,
+    Ligatures = TeX,
+    Scale = MatchLowercase,
+    Path = ./fonts/
+]{cmunrm.ttf}
+
+\newfontfamily\cyrillicfontsf[
+    Script = Cyrillic,
+    Ligatures = TeX,
+    Scale = MatchLowercase,
+    Path = ./fonts/
+]{cmunsx.ttf}
+
+\newfontfamily\cyrillicfonttt[
+    Script = Cyrillic,
+    Scale = MatchLowercase,
+    Path = ./fonts/
+]{cmuntt.ttf}
+
 
 % \RequirePackage[RM={Scale=0.94},
 % SS={Scale=0.94},
