@@ -11,7 +11,6 @@
 {Typesetting articles for Computer Algebra Confererence} % Description
 
 \RequirePackage{xparse}
-\@ifundefined{regex_match:nnTF}{\RequirePackage{l3regex}}{}
 
 \ExplSyntaxOn
 
@@ -2960,10 +2959,6 @@ intitle=true,%
 %%
 %% Fonts
 %%
-
-\ifpdftex
-\RequirePackage[T1]{fontenc}
-\fi
 
 %% Main font
 % \file_if_exist:nTF { sourceserifpro.sty }
