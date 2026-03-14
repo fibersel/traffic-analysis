@@ -1,83 +1,85 @@
-\documentclass[twocolumn]{ittmm}
+%%
+\documentclass[%
+]{ittmm}
 
-%% Language support
 \usepackage{polyglossia}
-\setmainlanguage{russian}
-\setotherlanguage{english}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguages{english}
 
-%% Additional packages
-\usepackage{listings}
-\usepackage{xcolor}
+%%% One can fix some overfulls
+\sloppy
+
+%% Minted listings support
+%% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
+\usepackage{minted}
+%% auto break lines
+\setminted{breaklines=true}
+
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{tabularx}
 
-%% Bibliography resource
 \addbibresource{main.bib}
 
-%% Code listing style
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+%% end of the preamble, start of the body of the document source.
+\begin{document}
 
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2
-}
-\lstset{style=mystyle}
+\selectlanguage{russian}
+
+%%
+%% Rights management information.
+%% CC-BY is default license.
+\copyrightyear{2026}
+\copyrightclause{Copyright for this paper by its authors.
+Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0).}
+
+%%
+%% This command is for the conference information
+\conference{Information and Telecommunication Technologies and Mathematical Modeling of High-Tech Systems 2026 (ITTMM 2026), Moscow, April 13--18, 2026}
 
 %%
 %% Title
 %%
 \title{Экспериментальное исследование алгоритма активного управления очередями RED в среде имитационного моделирования}
+\title[mode=trans]{Experimental study of the RED active queue management algorithm in a simulation environment}
 
 %%
 %% Authors
 %%
-\author[1]{Палагашвили А.М.}
-\author[1]{Кулябов Д.С.}
+\author{А. М. Палагашвили}[%
+  trans={Abuly M. Palagashvily},
+  orcid=???????????????????????????,
+  email=1042250185@rudn.ru,
+]
+
+% \author[1]{Кулябов Д.С.}
 
 %%
 %% Affiliations
 %%
-\address[1]{%
-  Российский университет дружбы народов (РУДН),
-  Москва, Россия}
+\address{%
+  Российский университет дружбы народов,
+  ул. Миклухо-Маклая, д.~6,
+Москва, 117198, Российская Федерация}
 
 %%
 %% Emails
 %%
-\emailauthor{1042250185@rudn.ru}{Палагашвили А.М.}
+% \emailauthor{1042250185@rudn.ru}{Палагашвили А.М.}
 
 %%
 %% Keywords
 %%
-\begin{document}
 
 \begin{keywords}
-Active Queue Management, RED, Network Emulation, NS-2, TCP Congestion Control, Queue Oscillations, Mathematical Modeling
+  Active Queue Management, RED, Network Emulation, NS-2, TCP Congestion Control, Queue Oscillations, Mathematical Modeling
 \end{keywords}
 
 %%
 %% Abstract
 %%
 \begin{abstract}
-Алгоритмы активного управления очередями (Active Queue Management, AQM) играют критическую роль в предотвращении перегрузок и снижении задержек в пакетных сетях передачи данных. Одним из классических алгоритмов данного класса является Random Early Detection (RED), осуществляющий вероятностное отбрасывание пакетов до переполнения буфера маршрутизатора. В данной работе представлено экспериментальное исследование алгоритма RED с использованием среды имитационного моделирования NS-2. Экспериментальная установка включает 60 TCP-источников, маршрутизатор с реализованным алгоритмом RED и приёмники трафика. Конфигурация параметров RED ($q_{min}=20$, $q_{max}=60$ пакетов) выбрана на основе рекомендаций по устойчивости. Полученные результаты демонстрируют характерное поведение алгоритма RED, включая раннее отбрасывание пакетов, стабилизацию средней длины очереди и снижение задержек. Проведено сравнение экспериментальных данных с теоретическими моделями, описывающими условия возникновения автоколебательных режимов.
+  Алгоритмы активного управления очередями (Active Queue Management, AQM) играют критическую роль в предотвращении перегрузок и снижении задержек в пакетных сетях передачи данных. Одним из классических алгоритмов данного класса является Random Early Detection (RED), осуществляющий вероятностное отбрасывание пакетов до переполнения буфера маршрутизатора. В данной работе представлено экспериментальное исследование алгоритма RED с использованием среды имитационного моделирования NS-2. Экспериментальная установка включает 60 TCP-источников, маршрутизатор с реализованным алгоритмом RED и приёмники трафика. Конфигурация параметров RED ($q_{min}=20$, $q_{max}=60$ пакетов) выбрана на основе рекомендаций по устойчивости. Полученные результаты демонстрируют характерное поведение алгоритма RED, включая раннее отбрасывание пакетов, стабилизацию средней длины очереди и снижение задержек. Проведено сравнение экспериментальных данных с теоретическими моделями, описывающими условия возникновения автоколебательных режимов.
 \end{abstract}
 
 \maketitle
@@ -105,14 +107,13 @@ Active Queue Management, RED, Network Emulation, NS-2, TCP Congestion Control, Q
 Поведение системы TCP-источник и RED-маршрутизатор может быть описано системой нелинейных дифференциальных уравнений. В работе~\cite{korolkova2010phd} предложена математическая модель, учитывающая динамику окна перегрузки TCP $w(t)$, мгновенную длину очереди $q(t)$ и среднюю длину очереди $\hat{q}(t)$:
 
 \begin{equation}
-\begin{cases}
-\dfrac{dw(t)}{dt} = \dfrac{1}{T(t)} - \dfrac{w(t)w(t-T)}{2T(t-T)}p(t-T), \\[6pt]
-\dfrac{dq(t)}{dt} = \dfrac{N w(t)}{T(t)} (1 - p(\hat{q}(t))) - C, \\[6pt]
-\dfrac{d\hat{q}(t)}{dt} = w_q C (q(t) - \hat{q}(t)),
-\end{cases}
-\label{eq:fluid_model}
+  \begin{cases}
+    \dfrac{dw(t)}{dt} = \dfrac{1}{T(t)} - \dfrac{w(t)w(t-T)}{2T(t-T)}p(t-T), \\[6pt]
+    \dfrac{dq(t)}{dt} = \dfrac{N w(t)}{T(t)} (1 - p(\hat{q}(t))) - C, \\[6pt]
+    \dfrac{d\hat{q}(t)}{dt} = w_q C (q(t) - \hat{q}(t)),
+  \end{cases}
+  \label{eq:fluid_model}
 \end{equation}
-
 где $T(t)$~--- время кругового оборота (RTT), $C$~--- пропускная способность канала (пакетов в секунду), $N$~--- число потоков, $p$~--- вероятность сброса, $w_q$~--- весовой коэффициент сглаживания.
 
 В работе~\cite{velieva2019phd} показано, что данная система может демонстрировать автоколебательные режимы (предельные циклы) при определённых значениях параметров. Используя метод гармонической линеаризации и критерий Найквиста--Михайлова, были получены границы области устойчивости.
@@ -122,15 +123,14 @@ Active Queue Management, RED, Network Emulation, NS-2, TCP Congestion Control, Q
 Функция вероятности сброса $p(\hat{q})$ для классического RED определяется как:
 
 \begin{equation}
-p(\hat{q}) =
-\begin{cases}
-0, & 0 < \hat{q} \leq q_{min}, \\
-\dfrac{\hat{q} - q_{min}}{q_{max} - q_{min}} p_{max}, & q_{min} < \hat{q} \leq q_{max}, \\
-1, & \hat{q} > q_{max},
-\end{cases}
-\label{eq:red_prob}
+  p(\hat{q}) =
+  \begin{cases}
+    0, & 0 < \hat{q} \leq q_{min}, \\
+    \dfrac{\hat{q} - q_{min}}{q_{max} - q_{min}} p_{max}, & q_{min} < \hat{q} \leq q_{max}, \\
+    1, & \hat{q} > q_{max},
+  \end{cases}
+  \label{eq:red_prob}
 \end{equation}
-
 где $q_{min}$~--- минимальный порог, $q_{max}$~--- максимальный порог, $p_{max}$~--- максимальная вероятность сброса.
 
 В работе~\cite{velieva2019phd} было показано, что при $q_{max} - q_{min} < 20$ пакетов система склонна к возникновению автоколебательного режима из-за слишком крутой функции вероятности сброса. При $q_{max} - q_{min} > 40$ пакетов система становится слишком инерционной.
@@ -140,10 +140,9 @@ p(\hat{q}) =
 На основе метода гармонической линеаризации в работе~\cite{velieva2019phd} были получены следующие условия устойчивости системы TCP-RED:
 
 \begin{equation}
-w_q < \frac{1}{2\pi N} \sqrt{\frac{C}{q_{max} - q_{min}}}
-\label{eq:stability}
+  w_q < \frac{1}{2\pi N} \sqrt{\frac{C}{q_{max} - q_{min}}}
+  \label{eq:stability}
 \end{equation}
-
 где $N$~--- число TCP-потоков, $C$~--- пропускная способность канала.
 
 Для типичных параметров сети ($N=60$, $C=15$~Мбит/с, $q_{max}-q_{min}=40$ пакетов) получаем $w_q < 0.003$. В нашем эксперименте используется $w_q = 0.002$, что обеспечивает устойчивость системы.
@@ -155,11 +154,11 @@ w_q < \frac{1}{2\pi N} \sqrt{\frac{C}{q_{max} - q_{min}}}
 Для проведения эксперимента использовалась система имитационного моделирования \textbf{NS-2} (Network Simulator~2), которая является эталонным средством верификации сетевых протоколов~\cite{velieva2019phd}. NS-2 содержит эталонную реализацию алгоритмов RED, разработанную С.\,Флойд, что обеспечивает высокую достоверность результатов. Основные преимущества NS-2 для исследования AQM:
 
 \begin{itemize}
-    \item эталонная реализация RED от С.\,Флойд;
-    \item поддержка различных вариантов TCP (Reno, NewReno, SACK);
-    \item детальный мониторинг параметров очереди;
-    \item возможность трассировки всех сетевых событий;
-    \item широкое использование в академических исследованиях.
+  \item эталонная реализация RED от С.\,Флойд;
+  \item поддержка различных вариантов TCP (Reno, NewReno, SACK);
+  \item детальный мониторинг параметров очереди;
+  \item возможность трассировки всех сетевых событий;
+  \item широкое использование в академических исследованиях.
 \end{itemize}
 
 \subsection{Топология сети}
@@ -167,10 +166,10 @@ w_q < \frac{1}{2\pi N} \sqrt{\frac{C}{q_{max} - q_{min}}}
 Экспериментальная топология состоит из 60 TCP-источников, двух маршрутизаторов и 60 приёмников трафика:
 
 \begin{itemize}
-    \item \textbf{TCP Sources (60 nodes)}~--- источники трафика (генераторы нагрузки TCP Reno).
-    \item \textbf{Router R1}~--- первый маршрутизатор (DropTail).
-    \item \textbf{Router R2}~--- второй маршрутизатор с включённым алгоритмом RED на исходящем интерфейсе.
-    \item \textbf{TCP Sinks (60 nodes)}~--- приёмники трафика.
+  \item \textbf{TCP Sources (60 nodes)}~--- источники трафика (генераторы нагрузки TCP Reno).
+  \item \textbf{Router R1}~--- первый маршрутизатор (DropTail).
+  \item \textbf{Router R2}~--- второй маршрутизатор с включённым алгоритмом RED на исходящем интерфейсе.
+  \item \textbf{TCP Sinks (60 nodes)}~--- приёмники трафика.
 \end{itemize}
 
 Связь между источниками и R1, а также R2 и приёмниками организована через каналы 100~Мбит/с с задержкой 20~мс. «Узким местом» (bottleneck) является канал между R1 и R2 (15~Мбит/с, 35~мс), где применяется дисциплина очереди RED.
@@ -178,8 +177,8 @@ w_q < \frac{1}{2\pi N} \sqrt{\frac{C}{q_{max} - q_{min}}}
 \subsection{Настройка RED в NS-2}
 
 В NS-2 управление очередями осуществляется через объект \texttt{Queue/RED}. Алгоритм RED настраивается следующими параметрами:
-
-\begin{lstlisting}[language=tcl, caption=Настройка RED в NS-2]
+% caption=Настройка RED в NS-2
+\begin{minted}{tcl}
 Queue/RED set bytes_ false
 Queue/RED set queue_in_bytes_ false
 Queue/RED set gentle_ false
@@ -191,27 +190,27 @@ Queue/RED set drop_tail_ false
 Queue/RED set cur_max_p_ 0.1
 Queue/RED set thresh_ 20
 Queue/RED set maxthresh_ 60
-\end{lstlisting}
+\end{minted}
 
 Параметры соответствуют теоретической модели~(\ref{eq:red_prob}) и выбраны на основе рекомендаций по устойчивости~\cite{velieva2019phd}:
 \begin{itemize}
-    \item \texttt{thresh\_} ($q_{min}=20$)~--- минимальный порог (пакеты);
-    \item \texttt{maxthresh\_} ($q_{max}=60$)~--- максимальный порог (пакеты);
-    \item \texttt{cur\_max\_p\_} ($p_{max}=0.1$)~--- максимальная вероятность сброса;
-    \item \texttt{q\_weight\_} ($w_q=0.002$)~--- весовой коэффициент EWMA;
-    \item \texttt{mean\_pktsize\_} (1000)~--- средний размер пакета (байт).
+  \item \texttt{thresh\_} ($q_{min}=20$)~--- минимальный порог (пакеты);
+  \item \texttt{maxthresh\_} ($q_{max}=60$)~--- максимальный порог (пакеты);
+  \item \texttt{cur\_max\_p\_} ($p_{max}=0.1$)~--- максимальная вероятность сброса;
+  \item \texttt{q\_weight\_} ($w_q=0.002$)~--- весовой коэффициент EWMA;
+  \item \texttt{mean\_pktsize\_} (1000)~--- средний размер пакета (байт).
 \end{itemize}
 
 \subsection{Мониторинг очереди}
 
 Для сбора статистики использовались встроенные средства мониторинга NS-2:
-
-\begin{lstlisting}[language=tcl, caption=Мониторинг очереди в NS-2]
+% caption=Мониторинг очереди в NS-2
+\begin{minted}{tcl}
 set redq [[$ns link $R1 $R2] queue]
 $redq trace curq_
 $redq trace ave_
 $redq attach $traceq
-\end{lstlisting}
+\end{minted}
 
 Из вывода извлекались значения \texttt{curq\_} (мгновенная длина очереди) и \texttt{ave\_} (средняя длина очереди EWMA).
 
@@ -220,22 +219,22 @@ $redq attach $traceq
 Для обработки trace-файлов NS-2 был разработан скрипт на языке Python, использующий библиотеки matplotlib и numpy.
 
 \begin{algorithm}
-\caption{Алгоритм обработки trace-файла NS-2}
-\begin{algorithmic}[1]
-\STATE Открыть trace-файл red\_queue.tr
-\FOR{каждой строки файла}
+  \caption{Алгоритм обработки trace-файла NS-2}
+  \begin{algorithmic}[1]
+    \STATE Открыть trace-файл red\_queue.tr
+    \FOR{каждой строки файла}
     \STATE Извлечь тип события (Q или a)
     \STATE Извлечь временную метку
     \STATE Извлечь значение длины очереди
     \IF{тип события = 'Q'}
-        \STATE Сохранить как мгновенную длину очереди
+    \STATE Сохранить как мгновенную длину очереди
     \ELSIF{тип события = 'a'}
-        \STATE Сохранить как среднюю длину очереди (EWMA)
+    \STATE Сохранить как среднюю длину очереди (EWMA)
     \ENDIF
-\ENDFOR
-\STATE Построить график динамики очереди
-\STATE Вычислить статистические характеристики
-\end{algorithmic}
+    \ENDFOR
+    \STATE Построить график динамики очереди
+    \STATE Вычислить статистические характеристики
+  \end{algorithmic}
 \end{algorithm}
 
 \section{Ход эксперимента и результаты}
@@ -243,28 +242,28 @@ $redq attach $traceq
 \subsection{Сценарий нагрузки}
 
 На узлах-источниках запускалась генерация TCP-трафика длительностью 60~секунд с количеством параллельных потоков 60, достаточным для насыщения канала:
-
-\begin{lstlisting}[language=tcl, caption=Запуск TCP-потоков в NS-2]
+% caption=Запуск TCP-потоков в NS-2
+\begin{minted}{tcl}
 for {set i 1} {$i <= 60} {incr i} {
     $ns at 0.0 "$ftp($i) start"
     $ns at 60.0 "$ftp($i) stop"
 }
-\end{lstlisting}
+\end{minted}
 
 \subsection{Анализ результатов}
 
 В ходе эксперимента были зафиксированы следующие эффекты:
 
 \begin{enumerate}
-    \item \textbf{Стабилизация очереди.} Средняя длина очереди $\hat{q}(t)$ удерживалась в диапазоне между $q_{min}$ и $q_{max}$ (20--60 пакетов), что подтверждает работу механизма EWMA и соответствие поведения реализации в NS-2 теоретической модели~(\ref{eq:fluid_model}).
+  \item \textbf{Стабилизация очереди.} Средняя длина очереди $\hat{q}(t)$ удерживалась в диапазоне между $q_{min}$ и $q_{max}$ (20--60 пакетов), что подтверждает работу механизма EWMA и соответствие поведения реализации в NS-2 теоретической модели~(\ref{eq:fluid_model}).
 
-    \item \textbf{Раннее отбрасывание.} Пакеты начали отбрасываться до полного заполнения буфера (limit=300). Суммарное количество отброшенных пакетов составило около 5\% от общего трафика.
+  \item \textbf{Раннее отбрасывание.} Пакеты начали отбрасываться до полного заполнения буфера (limit=300). Суммарное количество отброшенных пакетов составило около 5\% от общего трафика.
 
-    \item \textbf{Отсутствие глобальной синхронизации.} В отличие от дисциплины Drop Tail, при использовании RED не наблюдалось резких периодических падений пропускной способности.
+  \item \textbf{Отсутствие глобальной синхронизации.} В отличие от дисциплины Drop Tail, при использовании RED не наблюдалось резких периодических падений пропускной способности.
 
-    \item \textbf{Снижение задержек.} Средняя задержка (RTT) при использовании RED составила 45~мс, тогда как при переполнении буфера (Drop Tail) она достигала 150~мс.
+  \item \textbf{Снижение задержек.} Средняя задержка (RTT) при использовании RED составила 45~мс, тогда как при переполнении буфера (Drop Tail) она достигала 150~мс.
 
-    \item \textbf{Устойчивость системы.} При выбранных параметрах ($q_{min}=20$, $q_{max}=60$, $w_q=0.002$) система не входила в автоколебательный режим, что согласуется с теоретическими предсказаниями~\cite{velieva2019phd}.
+  \item \textbf{Устойчивость системы.} При выбранных параметрах ($q_{min}=20$, $q_{max}=60$, $w_q=0.002$) система не входила в автоколебательный режим, что согласуется с теоретическими предсказаниями~\cite{velieva2019phd}.
 \end{enumerate}
 
 \subsection{Визуализация результатов}
@@ -272,10 +271,10 @@ for {set i 1} {$i <= 60} {incr i} {
 На рисунке~\ref{fig:queue} представлена зависимость длины очереди от времени. Видно, что при превышении порога $q_{min}$ начинается рост вероятности сброса, что ограничивает дальнейший рост очереди. Амплитуда колебаний очереди не превышала 15~пакетов, что свидетельствует об отсутствии автоколебательного режима.
 
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\linewidth]{queue_graph.png}
-    \caption{Динамика длины очереди при работе алгоритма RED (NS-2 имитационное моделирование)}
-    \label{fig:queue}
+  \centering
+  \includegraphics[width=\linewidth]{queue_graph.png}
+  \caption{Динамика длины очереди при работе алгоритма RED (NS-2 имитационное моделирование)}
+  \label{fig:queue}
 \end{figure}
 
 На гистограмме распределения длины очереди (нижняя часть рисунка~\ref{fig:queue}) видно, что большинство значений сосредоточено в диапазоне между $q_{min}$ и $q_{max}$, что подтверждает эффективность работы алгоритма RED.
@@ -289,21 +288,21 @@ for {set i 1} {$i <= 60} {incr i} {
 В таблице~\ref{tab:results} приведены сравнительные характеристики работы сети с дисциплиной Drop Tail и алгоритмом RED.
 
 \begin{table}[htbp]
-\centering
-\small
-\caption{Сравнительный анализ характеристик сети}
-\label{tab:results}
-\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|X|X|}
-\hline
-\textbf{Параметр} & \textbf{Drop Tail} & \textbf{RED} \\ \hline
-Средняя пропускная способность (Мбит/с) & 14.2 & 14.8 \\ \hline
-Средняя задержка (мс) & 150 & 45 \\ \hline
-Джиттер (мс) & 45 & 12 \\ \hline
-Потери пакетов (\%) & 0.1 & 5.0 \\ \hline
-Максимальная длина очереди (пакеты) & 300 & 65 \\ \hline
-Средняя длина очереди (пакеты) & 280 & 40 \\ \hline
-Станд.\ отклонение очереди & 85 & 15 \\ \hline
-\end{tabularx}
+  \centering
+  \small
+  \caption{Сравнительный анализ характеристик сети}
+  \label{tab:results}
+  \begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|X|X|}
+    \hline
+    \textbf{Параметр} & \textbf{Drop Tail} & \textbf{RED} \\ \hline
+    Средняя пропускная способность (Мбит/с) & 14.2 & 14.8 \\ \hline
+    Средняя задержка (мс) & 150 & 45 \\ \hline
+    Джиттер (мс) & 45 & 12 \\ \hline
+    Потери пакетов (\%) & 0.1 & 5.0 \\ \hline
+    Максимальная длина очереди (пакеты) & 300 & 65 \\ \hline
+    Средняя длина очереди (пакеты) & 280 & 40 \\ \hline
+    Станд.\ отклонение очереди & 85 & 15 \\ \hline
+  \end{tabularx}
 \end{table}
 
 Как видно из таблицы, RED жертвует незначительной частью пропускной способности ради существенного снижения задержек и джиттера, что критически важно для интерактивных приложений.
@@ -320,9 +319,9 @@ for {set i 1} {$i <= 60} {incr i} {
 
 Результаты данного исследования согласуются с результатами, полученными в работах~\cite{korolkova2010phd, velieva2019phd}. В частности:
 \begin{itemize}
-    \item подтверждена область устойчивости при $w_q = 0.002$;
-    \item подтверждено отсутствие автоколебаний при $q_{max} - q_{min} = 40$ пакетов;
-    \item подтверждена эффективность метода гармонической линеаризации для прогнозирования поведения системы.
+  \item подтверждена область устойчивости при $w_q = 0.002$;
+  \item подтверждено отсутствие автоколебаний при $q_{max} - q_{min} = 40$ пакетов;
+  \item подтверждена эффективность метода гармонической линеаризации для прогнозирования поведения системы.
 \end{itemize}
 
 \subsection{Ограничения контейнерной эмуляции}
@@ -331,19 +330,19 @@ for {set i 1} {$i <= 60} {incr i} {
 
 Для будущей работы, требующей полной функциональности RED, рекомендуются:
 \begin{enumerate}
-    \item среда имитационного моделирования NS-2/NS-3~\cite{ns2manual};
-    \item GNS3 с полными Linux VM;
-    \item физический тестовый стенд с RED-совместимыми маршрутизаторами.
+  \item среда имитационного моделирования NS-2/NS-3~\cite{ns2manual};
+  \item GNS3 с полными Linux VM;
+  \item физический тестовый стенд с RED-совместимыми маршрутизаторами.
 \end{enumerate}
 
 \subsection{Практические рекомендации}
 
 На основе полученных результатов можно сформулировать следующие рекомендации:
 \begin{itemize}
-    \item минимальный порог $q_{min}$ должен быть не менее 20~пакетов;
-    \item максимальный порог $q_{max}$ должен быть не более чем в 3~раза больше $q_{min}$;
-    \item весовой коэффициент $w_q$ должен быть не более 0.003 для сетей с 60+ TCP-потоками;
-    \item максимальная вероятность сброса $p_{max}$ должна быть в диапазоне 0.05--0.15.
+  \item минимальный порог $q_{min}$ должен быть не менее 20~пакетов;
+  \item максимальный порог $q_{max}$ должен быть не более чем в 3~раза больше $q_{min}$;
+  \item весовой коэффициент $w_q$ должен быть не более 0.003 для сетей с 60+ TCP-потоками;
+  \item максимальная вероятность сброса $p_{max}$ должна быть в диапазоне 0.05--0.15.
 \end{itemize}
 
 \section{Заключение}
@@ -353,6 +352,31 @@ for {set i 1} {$i <= 60} {incr i} {
 Результаты эксперимента подтвердили теоретические положения о способности RED стабилизировать длину очереди и предотвращать переполнение буфера. Разработанный лабораторный сценарий может быть использован в учебном процессе для изучения механизмов AQM, а также как базовый стенд для тестирования модификаций алгоритма RED в будущих исследованиях.
 
 Дальнейшая работа планируется в направлении исследования автоколебательных режимов при экстремальных нагрузках и сравнения производительности RED с современными алгоритмами на базе машинного обучения. Также планируется интеграция методов символьных вычислений для автоматического подбора устойчивых параметров конфигурации RED на основе модели~\cite{korolkova2010phd}.
+
+% \begin{authorcontributions}
+%   Концептуализация, написание --- рецензирование и редактирование: Анна Владиславовна Королькова; методология, написание --- подготовка первоначального варианта: Дмитрий Сергеевич Кулябов.
+%   Все авторы прочитали и согласились с опубликованной версией рукописи.
+% \end{authorcontributions}
+
+\begin{funding}
+  Данное исследование не получало внешнего финансирования.
+\end{funding}
+
+\begin{dataavailability}
+  В ходе исследования не было создано и проанализировано никаких новых данных. Совместное использование данных неприменимо.
+\end{dataavailability}
+
+\begin{conflictsofinterest}
+  Авторы заявляют об отсутствии конфликта интересов.
+\end{conflictsofinterest}
+
+% \begin{acknowledgments}
+%   Мы благодарим организаторов конференции за предоставленную возможность создать этот шаблон.
+% \end{acknowledgments}
+
+\begin{aideclaration}
+  Авторы не использовали никаких инструментов генеративного искусственного интеллекта.
+\end{aideclaration}
 
 %%
 %% Bibliography

@@ -11,6 +11,7 @@
 {Typesetting articles for Computer Algebra Confererence} % Description
 
 \RequirePackage{xparse}
+\@ifundefined{regex_match:nnTF}{\RequirePackage{l3regex}}{}
 
 \ExplSyntaxOn
 
@@ -2911,7 +2912,7 @@
 % \bibliographystyle{elsarticle-num}
 
 \usepackage[%
-parentracker=true,%i
+parentracker=true,%
 backend=biber,%
 hyperref=auto,%
 language=auto,%
@@ -2960,6 +2961,10 @@ intitle=true,%
 %% Fonts
 %%
 
+\ifpdftex
+\RequirePackage[T1]{fontenc}
+\fi
+
 %% Main font
 % \file_if_exist:nTF { sourceserifpro.sty }
 % {
@@ -2984,45 +2989,24 @@ intitle=true,%
 % }
 
 
-\RequirePackage{fontspec}
+\setmainfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Serif}
+\setsansfont[Ligatures=TeX,Scale=MatchLowercase]{CMU Sans Serif}
+\setmonofont[Scale=MatchLowercase]{CMU Typewriter Text}
 
-\setmainfont[
-    Path = ./fonts/,          % путь к TTF файлам
-    Ligatures = TeX,
-    Scale = MatchLowercase
-]{cmunrm.ttf}
+% CMU Serif
+\newfontfamily\cyrillicfont%
+[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
+{CMU Serif}
 
-\setsansfont[
-    Path = ./fonts/,
-    Ligatures = TeX,
-    Scale = MatchLowercase
-]{cmunsx.ttf}
+% CMU Sans Serif
+\newfontfamily\cyrillicfontsf%
+[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]%
+{CMU Sans Serif}
 
-\setmonofont[
-    Path = ./fonts/,
-    Scale = MatchLowercase
-]{cmuntt.ttf}
-
-\newfontfamily\cyrillicfont[
-    Script = Cyrillic,
-    Ligatures = TeX,
-    Scale = MatchLowercase,
-    Path = ./fonts/
-]{cmunrm.ttf}
-
-\newfontfamily\cyrillicfontsf[
-    Script = Cyrillic,
-    Ligatures = TeX,
-    Scale = MatchLowercase,
-    Path = ./fonts/
-]{cmunsx.ttf}
-
-\newfontfamily\cyrillicfonttt[
-    Script = Cyrillic,
-    Scale = MatchLowercase,
-    Path = ./fonts/
-]{cmuntt.ttf}
-
+% CMU Typewriter Text
+\newfontfamily\cyrillicfonttt%
+[Script=Cyrillic,Scale=MatchLowercase]%
+{CMU Typewriter Text}
 
 % \RequirePackage[RM={Scale=0.94},
 % SS={Scale=0.94},
