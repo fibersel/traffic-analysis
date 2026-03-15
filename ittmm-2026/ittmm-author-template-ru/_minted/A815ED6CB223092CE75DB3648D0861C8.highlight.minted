@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{set}\PYG{+w}{ }redq\PYG{+w}{ }\PYG{k}{[[}\PYG{n+nv}{\PYGZdl{}ns}\PYG{+w}{ }\PYG{n+nv}{link}\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}R1}\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}R2}\PYG{k}{]}\PYG{+w}{ }\PYG{n+nv}{queue}\PYG{k}{]}
+\PYG{n+nv}{\PYGZdl{}redq}\PYG{+w}{ }\PYG{k}{trace}\PYG{+w}{ }curq\PYGZus{}
+\PYG{n+nv}{\PYGZdl{}redq}\PYG{+w}{ }\PYG{k}{trace}\PYG{+w}{ }ave\PYGZus{}
+\PYG{n+nv}{\PYGZdl{}redq}\PYG{+w}{ }\PYG{n+nv}{attach}\PYG{+w}{ }\PYG{n+nv}{\PYGZdl{}traceq}
+\end{MintedVerbatim}
