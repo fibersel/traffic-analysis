@@ -13,8 +13,16 @@ void QueueLog(uint32_t oldVal, uint32_t newVal) {
               << " Queue: " << newVal << std::endl;
 }
 
-int main() {
+int main(int argc, char* argv[]) {
 
+    // Parse params
+    std::string aqmType = "RED"; // по умолчанию
+
+    CommandLine cmd;
+    cmd.AddValue("aqm", "AQM type: RED or ARED", aqmType);
+    cmd.Parse(argc, argv);
+
+    // set up network
     NodeContainer senders;
     senders.Create(10);
 
@@ -69,12 +77,37 @@ int main() {
 
     tch.Uninstall(bottleneckDev);
 
-    // RED
+    if (aqmType == "ARED")
+    {
+        std::cout << "Using ARED" << std::endl;
+
+        tch.SetRootQueueDisc("ns3::AREDQueueDisc",
+                            "MinTh", DoubleValue(5),
+                            "MaxTh", DoubleValue(15),
+                            "LinkBandwidth", StringValue("2Mbps"),
+                            "LinkDelay", StringValue("10ms"));
+    }
+    else if (aqmType == "GENTLE")
+    {
+    std::cout << "Using Gentle RED" << std::endl;
+
     tch.SetRootQueueDisc("ns3::RedQueueDisc",
-                        "MinTh", DoubleValue(10),
-                        "MaxTh", DoubleValue(30),
-                        "LinkBandwidth", StringValue("2Mbps"),
-                        "LinkDelay", StringValue("10ms"));
+                         "MinTh", DoubleValue(5),
+                         "MaxTh", DoubleValue(15),
+                         "Gentle", BooleanValue(true),
+                         "LinkBandwidth", StringValue("2Mbps"),
+                         "LinkDelay", StringValue("10ms"));
+    }
+    else
+    {
+        std::cout << "Using RED" << std::endl;
+
+        tch.SetRootQueueDisc("ns3::RedQueueDisc",
+                            "MinTh", DoubleValue(5),
+                            "MaxTh", DoubleValue(15),
+                            "LinkBandwidth", StringValue("2Mbps"),
+                            "LinkDelay", StringValue("10ms"));
+    }
 
     QueueDiscContainer qdisc = tch.Install(bottleneckDev);
 
