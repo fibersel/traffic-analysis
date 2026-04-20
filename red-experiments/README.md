@@ -24,9 +24,9 @@ To run the simulation in NS-3:
 
 The simulation supports different Active Queue Management (AQM) algorithms:
 
-- **RED** (default): Random Early Detection
-- **ARED**: Adaptive RED
-- **GENTLE**: Gentle RED variant
+- RED (default): Random Early Detection
+- ARED: Adaptive RED
+- GENTLE: Gentle RED variant
 
 ### Examples
 
