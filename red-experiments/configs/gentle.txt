@@ -1,0 +1,26 @@
+# -------------------
+# Infrastructure
+# -------------------
+senderNetworkBase=10.1.0.0
+receiverNetworkBase=10.2.0.0
+subnetMask=255.255.255.0
+
+# -------------------
+# Experiment
+# -------------------
+nSenders=20
+bottleneckRate=1Mbps
+bottleneckDelay=10ms
+
+# AQM
+aqm=GENTLE
+minTh=5
+maxTh=10
+
+# Simulation
+simTime=10
+
+# logging files
+queueLogFile=queue.csv
+dropLogFile=drops.csv
+throughputLogFile=throughput.csv
