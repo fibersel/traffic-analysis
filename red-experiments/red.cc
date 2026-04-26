@@ -173,12 +173,6 @@ int main(int argc, char* argv[]) {
     std::cout << "AQM = " << cfg.aqm << std::endl;
     std::cout << "Senders = " << cfg.nSenders << std::endl;
 
-    // Parse params
-    std::string aqmType = "RED"; // по умолчанию
-
-    cmd.AddValue("aqm", "AQM type: RED or ARED", aqmType);
-    cmd.Parse(argc, argv);
-
     // set up network
     NodeContainer senders;
     senders.Create(cfg.nSenders);
