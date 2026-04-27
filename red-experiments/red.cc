@@ -14,11 +14,14 @@ using namespace ns3;
 
 static void ConfigureAqm(TrafficControlHelper& tch, const SimConfig& cfg)
 {
+    std::string maxSizeStr = std::to_string(cfg.maxSize) + "p";
+
     if (cfg.aqm == "ARED") {
         tch.SetRootQueueDisc("ns3::RedQueueDisc",
             "ARED",          BooleanValue(true),
             "MinTh",         DoubleValue(cfg.minTh),
             "MaxTh",         DoubleValue(cfg.maxTh),
+            "MaxSize",       QueueSizeValue(QueueSize(maxSizeStr)),
             "LinkBandwidth", StringValue(cfg.bottleneckRate),
             "LinkDelay",     StringValue(cfg.bottleneckDelay));
     } else if (cfg.aqm == "GENTLE") {
@@ -26,12 +29,17 @@ static void ConfigureAqm(TrafficControlHelper& tch, const SimConfig& cfg)
             "Gentle",        BooleanValue(true),
             "MinTh",         DoubleValue(cfg.minTh),
             "MaxTh",         DoubleValue(cfg.maxTh),
+            "MaxSize",       QueueSizeValue(QueueSize(maxSizeStr)),
             "LinkBandwidth", StringValue(cfg.bottleneckRate),
             "LinkDelay",     StringValue(cfg.bottleneckDelay));
     } else {
+        // Explicitly disable Gentle — ns-3-dev defaults it to true, which
+        // makes plain RED behave identically to Gentle RED without this line.
         tch.SetRootQueueDisc("ns3::RedQueueDisc",
+            "Gentle",        BooleanValue(false),
             "MinTh",         DoubleValue(cfg.minTh),
             "MaxTh",         DoubleValue(cfg.maxTh),
+            "MaxSize",       QueueSizeValue(QueueSize(maxSizeStr)),
             "LinkBandwidth", StringValue(cfg.bottleneckRate),
             "LinkDelay",     StringValue(cfg.bottleneckDelay));
     }

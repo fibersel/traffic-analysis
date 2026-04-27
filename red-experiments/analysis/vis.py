@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import argparse
@@ -31,10 +32,12 @@ def main():
     for algo in args.algorithms:
         data[algo] = load_data(algo)
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
     # ------------------------
     # QUEUE
     # ------------------------
-    plt.figure()
+    fig_queue = plt.figure()
 
     for algo, d in data.items():
         q = d["queue"]
@@ -47,11 +50,12 @@ def main():
     plt.title("Queue Dynamics Comparison")
     plt.legend()
     plt.grid()
+    fig_queue.savefig(os.path.join(script_dir, "queue.png"), dpi=150, bbox_inches="tight")
 
     # ------------------------
     # THROUGHPUT
     # ------------------------
-    plt.figure()
+    fig_throughput = plt.figure()
 
     for algo, d in data.items():
         t = d["throughput"]
@@ -64,11 +68,12 @@ def main():
     plt.title("Throughput Comparison")
     plt.legend()
     plt.grid()
+    fig_throughput.savefig(os.path.join(script_dir, "throughput.png"), dpi=150, bbox_inches="tight")
 
     # ------------------------
     # DROPS
     # ------------------------
-    plt.figure()
+    fig_drops = plt.figure()
 
     for algo, d in data.items():
         dr = d["drops"]
@@ -79,6 +84,7 @@ def main():
     plt.ylabel("Algorithm")
     plt.title("Packet Drops Comparison")
     plt.grid()
+    fig_drops.savefig(os.path.join(script_dir, "drops.png"), dpi=150, bbox_inches="tight")
 
     plt.show()
 

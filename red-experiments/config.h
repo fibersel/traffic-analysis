@@ -15,9 +15,10 @@ struct SimConfig {
     std::string bottleneckDelay = "10ms";
 
     // AQM
-    std::string aqm   = "RED";
-    double      minTh = 5.0;
-    double      maxTh = 15.0;
+    std::string  aqm     = "RED";
+    double       minTh   = 5.0;
+    double       maxTh   = 15.0;
+    uint32_t     maxSize = 100;  // queue limit in packets; must be > 2*maxTh
 
     // simulation
     double simTime = 10.0;

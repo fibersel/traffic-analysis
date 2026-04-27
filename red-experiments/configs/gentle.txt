@@ -16,6 +16,7 @@ bottleneckDelay=10ms
 aqm=GENTLE
 minTh=5
 maxTh=10
+maxSize=100
 
 # Simulation
 simTime=60

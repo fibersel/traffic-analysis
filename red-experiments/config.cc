@@ -38,6 +38,7 @@ void LoadConfig(const std::string& filename, SimConfig& cfg)
         else if (key == "aqm")                 cfg.aqm                 = value;
         else if (key == "minTh")               cfg.minTh               = std::stod(value);
         else if (key == "maxTh")               cfg.maxTh               = std::stod(value);
+        else if (key == "maxSize")             cfg.maxSize             = std::stoul(value);
         else if (key == "simTime")             cfg.simTime             = std::stod(value);
         else if (key == "queueLogFile")        cfg.queueLogFile        = value;
         else if (key == "dropLogFile")         cfg.dropLogFile         = value;
