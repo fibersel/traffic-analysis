@@ -1,0 +1,133 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Кодировка и язык ---
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% --- Поля ---
+\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+
+% --- Графика и таблицы ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+
+% --- Математика ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% --- Гиперссылки ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% --- Библиография ---
+\usepackage{cite}
+
+% --- Листинги кода ---
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  language=bash
+}
+
+% --- Подписи ---
+\usepackage{caption}
+\captionsetup{justification=centering}
+
+% --- Межстрочный интервал ---
+\usepackage{setspace}
+\onehalfspacing
+
+% ====================================================================
+\begin{document}
+
+% --- Титульная страница ---
+\begin{titlepage}
+  \centering
+  \textbf{Российский университет дружбы народов}\\
+  \vspace{0.5cm}
+  Факультет физико-математических и естественных наук\\
+  \vspace{2cm}
+
+  {\Large\bfseries Сравнительный анализ алгоритмов активного управления очередями: RED, ARED, Gentle~RED}\\
+
+  \vspace{3cm}
+  \begin{flushright}
+    \textbf{Выполнил:}\\
+    Палагашвили Абули Михайлович\\
+    аспирант\\
+    ORCID: 0009-0007-7009-7038\\
+    E-mail: 1042250185@rudn.ru\\
+  \end{flushright}
+
+  \vfill
+  Москва~--- 2026
+\end{titlepage}
+
+% --- Содержание ---
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+
+% ====================================================================
+% ВВЕДЕНИЕ (Introduction)
+% ====================================================================
+\section{Введение}
+\label{sec:intro}
+
+\subsection{RED (Random Early Detection)}
+
+\subsection{ARED (Adaptive RED)}
+
+\subsection{Gentle RED}
+
+% ====================================================================
+% МЕТОДЫ (Methods)
+% ====================================================================
+\section{Методы}
+\label{sec:methods}
+
+\subsection{Топология эксперимента}
+
+\subsection{Конфигурация AQM}
+
+\subsection{Инструментарий}
+
+\subsection{Метрики оценки}
+
+% ====================================================================
+% РЕЗУЛЬТАТЫ (Results)
+% ====================================================================
+\section{Результаты}
+\label{sec:results}
+
+\subsection{Динамика очереди}
+
+\subsection{Пропускная способность}
+
+\subsection{Сбросы пакетов}
+
+% ====================================================================
+% ОБСУЖДЕНИЕ (Discussion)
+% ====================================================================
+\section{Обсуждение}
+\label{sec:discussion}
+
+% ====================================================================
+% ЗАКЛЮЧЕНИЕ
+% ====================================================================
+\section{Заключение}
+\label{sec:conclusion}
+
+
+\end{document}
