@@ -1,25 +1,20 @@
 \documentclass[12pt,a4paper]{article}
 
-% --- Кодировка и язык ---
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 
-% --- Поля ---
 \usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
 
-% --- Графика и таблицы ---
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{float}
 
-% --- Математика ---
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-% --- Гиперссылки ---
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -28,10 +23,8 @@
   urlcolor=blue
 }
 
-% --- Библиография ---
 \usepackage{cite}
 
-% --- Листинги кода ---
 \usepackage{listings}
 \lstset{
   basicstyle=\ttfamily\small,
@@ -40,18 +33,14 @@
   language=bash
 }
 
-% --- Подписи ---
 \usepackage{caption}
 \captionsetup{justification=centering}
 
-% --- Межстрочный интервал ---
 \usepackage{setspace}
 \onehalfspacing
 
-% ====================================================================
 \begin{document}
 
-% --- Титульная страница ---
 \begin{titlepage}
   \centering
   \textbf{Российский университет дружбы народов}\\
@@ -74,14 +63,10 @@
   Москва~--- 2026
 \end{titlepage}
 
-% --- Содержание ---
 \setcounter{page}{1}
 \tableofcontents
 \newpage
 
-% ====================================================================
-% ВВЕДЕНИЕ (Introduction)
-% ====================================================================
 \section{Введение}
 \label{sec:intro}
 
@@ -91,9 +76,6 @@
 
 \subsection{Gentle RED}
 
-% ====================================================================
-% МЕТОДЫ (Methods)
-% ====================================================================
 \section{Методы}
 \label{sec:methods}
 
@@ -105,9 +87,6 @@
 
 \subsection{Метрики оценки}
 
-% ====================================================================
-% РЕЗУЛЬТАТЫ (Results)
-% ====================================================================
 \section{Результаты}
 \label{sec:results}
 
@@ -117,15 +96,9 @@
 
 \subsection{Сбросы пакетов}
 
-% ====================================================================
-% ОБСУЖДЕНИЕ (Discussion)
-% ====================================================================
 \section{Обсуждение}
 \label{sec:discussion}
 
-% ====================================================================
-% ЗАКЛЮЧЕНИЕ
-% ====================================================================
 \section{Заключение}
 \label{sec:conclusion}
 
